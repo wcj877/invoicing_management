@@ -169,7 +169,7 @@ public class StaffServlet extends HttpServlet {
 
         if (service.findStaff(staff.getStaffId(), staff.getPassword()) != null){
             session.setAttribute("id", staff.getStaffId());
-            this.findAll(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "账号或密码错误");
             request.getRequestDispatcher("auth-login.jsp").forward(request, response);
