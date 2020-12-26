@@ -171,7 +171,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">电话</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="clientPhone">
+                <input type="number" class="form-control" name="clientPhone">
             </div>
         </div>
 

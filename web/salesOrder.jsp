@@ -176,14 +176,14 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">进价</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" value="" name="price">
+                <input type="number" class="form-control" value="" name="price">
             </div>
         </div>
 
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">数量</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" value="" name="buyNumber">
+                <input type="number" class="form-control" value="" name="buyNumber">
             </div>
         </div>
 
