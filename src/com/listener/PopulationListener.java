@@ -1,3 +1,6 @@
+package com.listener;
+
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -6,10 +9,10 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 
-//监听在线人数
+//统计在线人数
 @WebListener()
-public class PopulationListener implements ServletContextListener,
-        HttpSessionListener, HttpSessionAttributeListener {
+public class PopulationListener implements ServletContextListener, HttpSessionListener,
+        HttpSessionAttributeListener {
 
     // Public constructor is required by servlet spec
     public PopulationListener() {
@@ -36,11 +39,30 @@ public class PopulationListener implements ServletContextListener,
     // HttpSessionListener implementation
     // -------------------------------------------------------
     public void sessionCreated(HttpSessionEvent se) {
-        /* Session is created. */
+        ServletContext application = se.getSession().getServletContext();
+
+        Integer onlineNumber = (Integer) application.getAttribute("onlineNumber");
+
+
+
+        if (onlineNumber == null)
+            onlineNumber = 0;
+        onlineNumber++;
+
+        application.setAttribute("onlineNumber", onlineNumber);
+        System.out.println("新增一位在线用户");
+
     }
 
     public void sessionDestroyed(HttpSessionEvent se) {
         /* Session is destroyed. */
+        ServletContext application = se.getSession().getServletContext();
+        Integer onlineNumber = (Integer) application.getAttribute("onlineNumber");
+
+        onlineNumber--;
+
+        application.setAttribute("onlineNumber", onlineNumber);
+        System.out.println("减少一位在线用户");
     }
 
     // -------------------------------------------------------
@@ -51,6 +73,9 @@ public class PopulationListener implements ServletContextListener,
       /* This method is called when an attribute 
          is added to a session.
       */
+        System.out.println("session 增加属性 ");
+        System.out.println("属性是" + sbe.getName());
+        System.out.println("值是" + sbe.getValue());
     }
 
     public void attributeRemoved(HttpSessionBindingEvent sbe) {

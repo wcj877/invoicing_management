@@ -27,7 +27,6 @@ public class ClientServlet extends HttpServlet {
     private ClientService service = ClientService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 

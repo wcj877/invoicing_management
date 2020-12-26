@@ -29,7 +29,6 @@ public class StaffServlet extends HttpServlet {
     private StaffService service = StaffService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 

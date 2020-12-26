@@ -27,7 +27,6 @@ public class SupplierServlet extends HttpServlet {
     private SupplierService service = SupplierService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 

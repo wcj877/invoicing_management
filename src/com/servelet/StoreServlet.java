@@ -27,7 +27,6 @@ public class StoreServlet extends HttpServlet {
     private StoreService service = StoreService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 

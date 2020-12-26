@@ -25,7 +25,6 @@ public class ClassifyServlet extends HttpServlet {
     private ClassifyService service = ClassifyService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 
@@ -62,6 +61,9 @@ public class ClassifyServlet extends HttpServlet {
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Classify classify = new Classify();
+
+        String classifyName = request.getParameter("classifyName");
+
 
         try {
             //采用默认临界值和系统临时文件夹构造文件项工厂对象

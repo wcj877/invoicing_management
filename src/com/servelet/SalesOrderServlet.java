@@ -30,7 +30,6 @@ public class SalesOrderServlet extends HttpServlet {
     private SalesOrderService service = SalesOrderService.newInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
         doGet(request, response);
     }
 

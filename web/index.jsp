@@ -85,6 +85,31 @@
             <h4 class="page-title">主页</h4>
         </div>
 
+        <div class="card-box gradient-success bx-shadow-lg">
+            <div class="float-left">
+                <h2 class="text-white mb-0 mt-2">在线人数</h2>
+            </div>
+            <div class="text-right">
+                <h3 class="text-white" id="onlineNumber">
+                    <%=request.getServletContext().getAttribute("onlineNumber")%>
+                </h3>
+                <script>
+                    function updateOnlineNumber() {
+                        $.ajax({
+                            url: "../IndexServlet",
+                            data: "method=online",
+                            success: function (data) {
+                                // console.log(data);
+                                $("#onlineNumber").text(data);
+                            }
+                        });
+                    }
+                    //每隔3秒刷新一次
+                    setInterval(updateOnlineNumber, 3000);
+                </script>
+            </div>
+        </div> <!-- end card-box-->
+
         <div class="title" style="font-size: 50px; text-align: center; width: 100%">
             欢迎使用商品管理系统
         </div>
