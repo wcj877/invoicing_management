@@ -46,7 +46,7 @@ public class SalesOrderServlet extends HttpServlet {
     }
 
 
-    protected void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SalesOrder salesOrder = new SalesOrder();
 
         try {
@@ -94,11 +94,13 @@ public class SalesOrderServlet extends HttpServlet {
                 }
 
                 SimpleDateFormat formatter= new SimpleDateFormat("yyyyMMddHHmmss");
+                SimpleDateFormat formatterDate= new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
                 Date date = new Date(System.currentTimeMillis());
 
                 salesOrder.setSalesOrderId("xs" + formatter.format(date));
 //                salesOrder.setStaffId(request.getSession().getAttribute("id"));
                 salesOrder.setStaffId("511223");
+                salesOrder.setTime(formatterDate.format(date));
 
                 service.add(salesOrder);
             }

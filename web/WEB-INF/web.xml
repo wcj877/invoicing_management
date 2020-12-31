@@ -5,9 +5,18 @@
          version="4.0">
 
     <servlet>
+        <servlet-name>DisplayChart</servlet-name>
+        <servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DisplayChart</servlet-name>
+        <url-pattern>/DisplayChart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>IndexServlet</servlet-name>
         <servlet-class>com.servelet.IndexServlet</servlet-class>
-                <load-on-startup>1</load-on-startup>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
@@ -18,7 +27,6 @@
     <servlet>
         <servlet-name>ProductServlet</servlet-name>
         <servlet-class>com.servelet.ProductServlet</servlet-class>
-<!--        <load-on-startup>1</load-on-startup>-->
     </servlet>
     <servlet-mapping>
         <servlet-name>ProductServlet</servlet-name>

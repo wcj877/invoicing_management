@@ -117,7 +117,7 @@
                             <th>销售员工</th>
                             <th>销售时间</th>
                             <th>数量</th>
-                            <th>进价（单价）</th>
+                            <th>售价（单价）</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -145,9 +145,9 @@
     <button type="button" class="close" onclick="Custombox.modal.close();">
         <span>&times;</span><span class="sr-only">Close</span>
     </button>
-    <h4 class="custom-modal-title">添加采购订单</h4>
+    <h4 class="custom-modal-title">添加销售订单</h4>
     <form class="form-horizontal m-2" method="post"
-          action="${pageContext.request.contextPath}/ProductServlet?method=insert"
+          action="${pageContext.request.contextPath}/SalesOrderServlet?method=insert"
           enctype="multipart/form-data">
 
         <div class="form-group row">
@@ -164,9 +164,9 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">客户</label>
             <div class="col-sm-10">
-                <select name="supplierId">
-                    <c:forEach items="${requestScope.supplierList}" var="supplier">
-                        <option value="${supplier.supplierId}">${supplier.supplierName}（编号：${supplier.supplierId}）</option>
+                <select name="clientId">
+                    <c:forEach items="${requestScope.clientList}" var="client">
+                        <option value="${client.clientId}">${client.clientName}（编号：${client.clientId}）</option>
                     </c:forEach>
                 </select>
             </div>
@@ -174,7 +174,7 @@
 
 
         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">进价</label>
+            <label class="col-sm-2 col-form-label">售价</label>
             <div class="col-sm-10">
                 <input type="number" class="form-control" value="" name="price">
             </div>
@@ -183,7 +183,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">数量</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" value="" name="buyNumber">
+                <input type="number" class="form-control" value="" name="salesNumber">
             </div>
         </div>
 

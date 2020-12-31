@@ -1,16 +1,21 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 87608
-  Date: 2020/12/26
-  Time: 14:07
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<html>
 <head>
-    <meta charset="utf-8"/>
     <title>商品经销存  -  管理系统</title>
+    <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* css 代码  */
+    </style>
+    <script src="https://code.highcharts.com.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/data.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description"/>
     <meta content="Coderthemes" name="author"/>
@@ -25,6 +30,9 @@
     <link href="public/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet"
           type="text/css"/>
 
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
     <!-- Icons css -->
     <link href="public/libs/@mdi/font/css/materialdesignicons.min.css" rel="stylesheet" type="text/css"/>
     <link href="public/libs/dripicons/webfont/webfont.css" rel="stylesheet" type="text/css"/>
@@ -34,12 +42,9 @@
     <!-- build:css -->
     <link href="public/css/app.css" rel="stylesheet" type="text/css"/>
     <!-- endbuild -->
-
 </head>
-
 <body>
 
-<!-- Navigation Bar-->
 <header id="topnav">
     <!-- end topbar-main -->
 
@@ -68,6 +73,11 @@
                         <a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll"><i
                                 class="mdi mdi-file-multiple"></i>销售管理</a>
                     </li>
+
+                    <li class="">
+                        <a href="${pageContext.request.contextPath}/StatisticsServlet"><i
+                                class="mdi mdi-file-multiple"></i>统计</a>
+                    </li>
                 </ul>
                 <!-- End navigation menu -->
 
@@ -76,54 +86,318 @@
         </div> <!-- end container -->
     </div> <!-- end navbar-custom -->
 </header>
-<!-- End Navigation Bar-->
-
 
 <div class="wrapper">
     <div class="container-fluid">
 
-        <!-- Page title box -->
-        <div class="page-title-alt-bg"></div>
-        <div class="page-title-box">
-            <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">主页</a></li>
-                <li class="breadcrumb-item active">主页</li>
-            </ol>
-            <h4 class="page-title">主页</h4>
-        </div>
+<div class="page-title-alt-bg"></div>
+<div class="page-title-box">
+    <ol class="breadcrumb float-right">
+        <li class="breadcrumb-item"><a href="javascript:void(0);">统计</a></li>
+        <li class="breadcrumb-item active">统计商品</li>
+    </ol>
+    <h4 class="page-title">统计</h4>
 
-        <div class="title" style="font-size: 50px; text-align: center; width: 100%">
-            欢迎使用商品管理系统
-        </div>
+    <span>选择统计类型</span>
+    <select id="types">
+        <option value="getNumber">统计商品的数量（采购/销售）情况</option>
+        <option value="getPrice">统计商品的价格（采购/销售）情况</option>
 
-        <!-- jQuery  -->
-        <script src="public/libs/jquery/jquery.min.js"></script>
-        <script src="public/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="public/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    </select>
 
-        <!-- KNOB JS -->
-        <script src="public/libs/jquery-knob/jquery.knob.min.js"></script>
-        <!-- Chart JS -->
-        <script src="public/libs/chart.js/Chart.bundle.min.js"></script>
+    <span style="margin-left: 20px">选择统计商品</span>
+    <select id="product">
+        <option value="">全部商品</option>
+        <c:forEach items="${requestScope.productList}" var="product">
+            <option value="${product.productId}">${product.productName}（编号：${product.productId}）</option>
+        </c:forEach>
+    </select>
 
-        <!-- Jvector map -->
-        <script src="public/libs/jqvmap/jquery.vmap.min.js"></script>
-        <script src="public/libs/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <span style="margin-left: 20px">选择时间</span>
+    <select id="myYear"></select>
 
-        <!-- Datatable js -->
-        <script src="public/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="public/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="public/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="public/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+</div>
 
-        <!-- Dashboard Init JS -->
-        <script src="public/js/jquery.dashboard.js"></script>
+<div id="container" style="min-width:400px;height:400px"></div>
+<div class="message"></div>
 
-        <!-- App js -->
-        <script src="public/js/jquery.core.js"></script>
-        <script src="public/js/jquery.app.js"></script>
+
+
+    <script>
+        //选择年份
+        window.onload=function(){
+            //设置年份的选择
+            var myDate= new Date();
+            var startYear=myDate.getFullYear()-50;//起始年份
+            var endYear=myDate.getFullYear()+50;//结束年份
+            var obj=document.getElementById('myYear');
+            for (var i=startYear;i<=endYear;i++)
+            {
+                obj.options.add(new Option(i,i));
+            }
+            obj.options[obj.options.length-51].selected=1;
+        };
+
+
+        var text = "数量（件）";
+        var statisticsType = 'getNumber';//选择统计类型
+        var id = '';//选择的商品编号
+        var year="";//时间
+        var t= new Date();
+        year = t.getFullYear();//获取当前时间的年份
+
+        var chart = null;
+        $.getJSON('StatisticsServlet?method=getProductAll&year=' + year, function (data) {
+            console.log(data);
+            chart = Highcharts.chart('container', {
+                title: {
+                    text: '统计全部商品的数量（采购/销售）情况'
+                },
+                yAxis: {
+                    title: {
+                        text: '商品数量'
+                    }
+                },
+                xAxis:{
+                    title:{
+                        text:'月份'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        pointStart: 1
+                    }
+                },
+                series: [{
+                    name: '采购',
+                    data: data.purchase
+                }, {
+                    name: '销售',
+                    data: data.sales
+                }],
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+            });
+        });
+
+        //改变类型是获取的统计信息
+        $('#types').change(function() {
+            var url = 'StatisticsServlet?method='+$(this).val() + "&year=" + year;
+
+            statisticsType = $(this).val();
+
+            text = $(this).val() === "getPrice" ? "价格（元）" : "数量（件）";//判断获取的是价格还是数量
+
+            console.log($(this).val());
+
+            if (id !== null)
+                url+= '&id='+id;
+
+
+
+            $.getJSON(url, function (data) {
+                console.log(data);
+                chart = Highcharts.chart('container', {
+                    title: {
+                        text:  year +'年的商品（采购/销售）统计'
+                    },
+                    yAxis: {
+                        title: {
+                            text: text
+                        }
+                    },
+                    xAxis:{
+                        title:{
+                            text:'月份'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 1
+                        }
+                    },
+                    series: [{
+                        name: '采购',
+                        data: data.purchase
+                    }, {
+                        name: '销售',
+                        data: data.sales
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+            });
+        });
+
+        //改变商品时获取统计
+        $('#product').change(function() {
+            var url = 'StatisticsServlet?method='+ statisticsType + "&year=" + year;
+
+            url += '&id='+$(this).val();
+            id =$(this).val();
+
+            $.getJSON(url, function (data) {
+                console.log(data);
+                chart = Highcharts.chart('container', {
+                    title: {
+                        text:  year +'年的商品（采购/销售）统计'
+                    },
+                    yAxis: {
+                        title: {
+                            text: text
+                        }
+                    },
+                    xAxis:{
+                        title:{
+                            text:'月份'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 1
+                        }
+                    },
+                    series: [{
+                        name: '采购',
+                        data: data.purchase
+                    }, {
+                        name: '销售',
+                        data: data.sales
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+            });
+        });
+
+
+        //改变时间时获取统计
+        $('#myYear').change(function() {
+            year = $(this).val();
+            var url = 'StatisticsServlet?method='+statisticsType + "&year=" + year;
+
+            statisticsType = $(this).val();
+
+            if (id !== null)
+                url+= '&id='+id;
+
+            $.getJSON(url, function (data) {
+                console.log(data);
+                chart = Highcharts.chart('container', {
+                    title: {
+                        text: year +'年的商品（采购/销售）统计'
+                    },
+                    yAxis: {
+                        title: {
+                            text: text
+                        }
+                    },
+                    xAxis:{
+                        title:{
+                            text:'月份'
+                        }
+                    },
+                    legend: {
+                        layout: 'vertical',
+                        align: 'right',
+                        verticalAlign: 'middle'
+                    },
+                    plotOptions: {
+                        series: {
+                            label: {
+                                connectorAllowed: false
+                            },
+                            pointStart: 1
+                        }
+                    },
+                    series: [{
+                        name: '采购',
+                        data: data.purchase
+                    }, {
+                        name: '销售',
+                        data: data.sales
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'bottom'
+                                }
+                            }
+                        }]
+                    }
+                });
+            });
+        });
+
+    </script>
+
     </div>
 </div>
 </body>
-
 </html>
