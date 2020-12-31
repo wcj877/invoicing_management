@@ -42,6 +42,7 @@ public class StoreServlet extends HttpServlet {
         }
     }
 
+    //获取所有仓库
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Store> storeList = service.findAll();
 
@@ -50,6 +51,7 @@ public class StoreServlet extends HttpServlet {
         request.getRequestDispatcher("store.jsp").forward(request, response);
     }
 
+    //删除仓库
     protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
@@ -64,6 +66,7 @@ public class StoreServlet extends HttpServlet {
 
     }
 
+    //增加仓库
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Store store = new Store();
@@ -121,6 +124,7 @@ public class StoreServlet extends HttpServlet {
         }
     }
 
+    //修改仓库
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 

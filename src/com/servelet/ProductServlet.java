@@ -43,6 +43,7 @@ public class ProductServlet extends HttpServlet {
         }
     }
 
+    //获取所有的商品信息
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Product> productAll = service.findAll();
@@ -50,6 +51,7 @@ public class ProductServlet extends HttpServlet {
         request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 
+    //删除商品
     protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
         String id = request.getParameter("productId");
@@ -58,6 +60,7 @@ public class ProductServlet extends HttpServlet {
         writer.print("OK");
     }
 
+    //添加商品
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Product product = new Product();
 
@@ -116,6 +119,7 @@ public class ProductServlet extends HttpServlet {
 
     }
 
+    //修改商品
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 

@@ -40,6 +40,7 @@ public class StatisticalStoreServlet extends HttpServlet {
         }
     }
 
+    //获取统计数据
     protected void getStatistical(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         String year = request.getParameter("year");

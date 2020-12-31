@@ -47,6 +47,7 @@ public class PurchaseServlet extends HttpServlet {
     }
 
 
+    //添加采购订单
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BuyOrder buyOrder = new BuyOrder();
 
@@ -113,6 +114,7 @@ public class PurchaseServlet extends HttpServlet {
         }
     }
 
+    //获取所有的采购订单信息
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<BuyOrder> buyOrderList = service.findAll();
 

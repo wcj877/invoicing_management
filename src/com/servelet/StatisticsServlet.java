@@ -52,8 +52,8 @@ public class StatisticsServlet extends HttpServlet {
         List<MonthlySales> monthlySalesList = salesOrderService.findMonth(id, year);
 
 
-        int[] purchasesNumber = new int[12];
-        int[] salesNumber = new int[12];
+        int[] purchasesNumber = new int[12];//每月采购的商品数
+        int[] salesNumber = new int[12];//每月销售的商品数
 
 
         for (int i = 0; i < purchasesNumber.length; i++) {
@@ -93,8 +93,8 @@ public class StatisticsServlet extends HttpServlet {
         SalesOrderService salesOrderService = SalesOrderService.newInstance();
         List<MonthlySales> monthlySalesList = salesOrderService.findMonth(id, year);
 
-        int[] purchasesPrice = new int[12];
-        int[] salesPrice = new int[12];
+        int[] purchasesPrice = new int[12];//每月采购的总资金
+        int[] salesPrice = new int[12];//每月销售的总利润
 
         for (int i = 0; i < purchasesPrice.length; i++) {
             for (MonthlyPurchase purchase: monthlyPurchasesList){

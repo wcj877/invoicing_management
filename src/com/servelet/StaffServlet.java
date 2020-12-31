@@ -45,6 +45,7 @@ public class StaffServlet extends HttpServlet {
         }
     }
 
+    //获取所有员工信息
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Staff> staffList = service.finAll();
         request.setAttribute("staffList", staffList);
@@ -52,6 +53,7 @@ public class StaffServlet extends HttpServlet {
         request.getRequestDispatcher("staff.jsp").forward(request, response);
     }
 
+    //删除员工
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter writer = resp.getWriter();
@@ -59,6 +61,7 @@ public class StaffServlet extends HttpServlet {
         writer.print("OK");
     }
 
+    //添加员工
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Staff staff = new Staff();
@@ -118,6 +121,7 @@ public class StaffServlet extends HttpServlet {
         }
     }
 
+    //修改员工
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
@@ -133,6 +137,7 @@ public class StaffServlet extends HttpServlet {
         writer.print("OK");
     }
 
+    //获取员工信息验证账号与密码是否正确
     protected void findStaff(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 

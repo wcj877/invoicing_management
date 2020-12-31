@@ -40,12 +40,14 @@ public class ClassifyServlet extends HttpServlet {
         }
     }
 
+    //返回所有的分类
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Classify> classifyList = service.findAll();
         request.getServletContext().setAttribute("classifyList", classifyList);
         request.getRequestDispatcher("classify.jsp").forward(request, response);
     }
 
+    //删除分类
     protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
@@ -58,6 +60,7 @@ public class ClassifyServlet extends HttpServlet {
 
     }
 
+    //添加分类
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Classify classify = new Classify();
@@ -120,6 +123,7 @@ public class ClassifyServlet extends HttpServlet {
 
     }
 
+    //更新分类
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 

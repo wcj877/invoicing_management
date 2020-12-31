@@ -21,6 +21,7 @@ import java.util.List;
 //@WebServlet(name = "IndexServlet")
 public class IndexServlet extends HttpServlet {
 
+    //将从数据库中将员工和仓库信息取出存放在application中
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);

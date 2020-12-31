@@ -43,6 +43,7 @@ public class ClientServlet extends HttpServlet {
         }
     }
 
+    //获取所有的客户
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Client> clientList = service.findAll();
         request.setAttribute("clientList", clientList);
@@ -50,6 +51,7 @@ public class ClientServlet extends HttpServlet {
         request.getRequestDispatcher("client.jsp").forward(request, response);
     }
 
+    //删除客户
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter writer = resp.getWriter();
@@ -59,6 +61,7 @@ public class ClientServlet extends HttpServlet {
         writer.print("OK");
     }
 
+    //添加客户
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Client client = new Client();
@@ -120,6 +123,7 @@ public class ClientServlet extends HttpServlet {
         }
     }
 
+    //更新客户
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 

@@ -43,8 +43,6 @@ public class PopulationListener implements ServletContextListener, HttpSessionLi
 
         Integer onlineNumber = (Integer) application.getAttribute("onlineNumber");
 
-
-
         if (onlineNumber == null)
             onlineNumber = 0;
         onlineNumber++;

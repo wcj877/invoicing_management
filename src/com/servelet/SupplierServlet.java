@@ -43,6 +43,7 @@ public class SupplierServlet extends HttpServlet {
         }
     }
 
+    //返回所有供应商
     protected void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Supplier> supplierList = service.findAll();
         request.setAttribute("supplierList", supplierList);
@@ -50,6 +51,7 @@ public class SupplierServlet extends HttpServlet {
         request.getRequestDispatcher("supplier.jsp").forward(request, response);
     }
 
+    //删除供应商
     protected void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         PrintWriter writer = resp.getWriter();
@@ -57,6 +59,7 @@ public class SupplierServlet extends HttpServlet {
         writer.print("OK");
     }
 
+    //增加供应商
     protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Supplier supplier = new Supplier();
@@ -119,6 +122,7 @@ public class SupplierServlet extends HttpServlet {
         }
     }
 
+    //修改供应商
     protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter writer = response.getWriter();
 
