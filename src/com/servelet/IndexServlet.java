@@ -42,10 +42,19 @@ public class IndexServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        PrintWriter writer = response.getWriter();
+        if ("quit".equals(request.getParameter("method"))){
+            quit(request, response);
+        } else {
+            PrintWriter writer = response.getWriter();
 
-        if ("online".equalsIgnoreCase(request.getParameter("method"))){
-            writer.write(request.getServletContext().getAttribute("onlineNumber").toString());
+            if ("online".equalsIgnoreCase(request.getParameter("method"))){
+                writer.write(request.getServletContext().getAttribute("onlineNumber").toString());
+            }
         }
+    }
+
+    protected void quit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().invalidate();//清除session中的所有属性
+        request.getRequestDispatcher("auth-login.jsp").forward(request, response);
     }
 }

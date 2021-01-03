@@ -56,8 +56,8 @@ public class StatisticalStoreServlet extends HttpServlet {
         BuyOrderService buyOrderService = BuyOrderService.newInstance();
         SalesOrderService salesOrderService = SalesOrderService.newInstance();
 
-        List<MonthWarehousing> storeWarehousing = buyOrderService.findStoreNum(id, year);
-        int sumBuyNum = buyOrderService.getSumBuyNum(id, year);
+        List<MonthWarehousing> storeWarehousing = buyOrderService.findStoreNum(id, year);//仓库每月的入出库
+        int sumBuyNum = buyOrderService.getSumBuyNum(id, year);//仓库为id的容量
 
         List<MonthOutOfStock> storeOutOfStock = salesOrderService.findStoreNum(id, year);
         int sumSalesNum = salesOrderService.getSumSalesNum(id, year);
@@ -68,23 +68,15 @@ public class StatisticalStoreServlet extends HttpServlet {
         int[] storeRemaining = new int[12];//仓库每月剩余容量
 
 
-        for (int i = 0; i < warehousingNum.length; i++) {
-            for (MonthWarehousing warehousing: storeWarehousing){
-                if (i+1 == warehousing.getMonth()){
-                    warehousingNum[i] = warehousing.getNum();
-                }
-            }
+        for (MonthWarehousing warehousing: storeWarehousing){
+            warehousingNum[warehousing.getMonth() - 1] = warehousing.getNum();
         }
 
-        for (int i = 0; i < outOfStockNum.length; i++) {
-            for (MonthOutOfStock outOfStock: storeOutOfStock){
-                if (i+1 == outOfStock.getMonth()){
-                    outOfStockNum[i] = outOfStock.getNum();
-                }
-            }
+        for (MonthOutOfStock outOfStock: storeOutOfStock){
+            outOfStockNum[outOfStock.getMonth() - 1] = outOfStock.getNum();
         }
 
-        storeSum[0] = sumBuyNum-sumSalesNum + warehousingNum[0] - outOfStockNum[0];
+        storeSum[0] = sumBuyNum-sumSalesNum + warehousingNum[0] - outOfStockNum[0];//第一个月的库存
         for (int i = 1; i < storeSum.length; i++) {
             storeSum[i] = storeSum[i-1];
             for (MonthWarehousing warehousing : storeWarehousing){
@@ -105,6 +97,7 @@ public class StatisticalStoreServlet extends HttpServlet {
         for (Store store:storeList){
             if (store.getStoreId().equals(id)){
                 remaining = store.getNumber();
+                break;
             }
         }
 

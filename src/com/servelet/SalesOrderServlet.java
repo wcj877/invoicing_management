@@ -100,7 +100,8 @@ public class SalesOrderServlet extends HttpServlet {
 
                 salesOrder.setSalesOrderId("xs" + formatter.format(date));
 //                salesOrder.setStaffId(request.getSession().getAttribute("id"));
-                salesOrder.setStaffId("511223");
+//                salesOrder.setStaffId("511223");
+                salesOrder.setStaffId(String.valueOf(request.getSession().getAttribute("id")));
                 salesOrder.setTime(formatterDate.format(date));
 
                 service.add(salesOrder);

@@ -39,7 +39,7 @@
                                     <div class="account-logo-box">
                                         <h2 class="text-uppercase text-center">
                                             <a href="${pageContext.request.contextPath}/index.jsp" class="text-success">
-                                                <span><img src="public/images/logo_dark.png" alt="" height="28"></span>
+                                                <img src="public/images/logo_dark.png" alt="">
                                             </a>
                                         </h2>
                                     </div>

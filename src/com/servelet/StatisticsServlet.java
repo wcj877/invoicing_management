@@ -56,18 +56,12 @@ public class StatisticsServlet extends HttpServlet {
         int[] salesNumber = new int[12];//每月销售的商品数
 
 
-        for (int i = 0; i < purchasesNumber.length; i++) {
-            for (MonthlyPurchase purchase: monthlyPurchasesList){
-                if (i+1 == purchase.getMonth())
-                    purchasesNumber[i] = (int) purchase.getSumNumber();
-            }
+        for (MonthlyPurchase purchase: monthlyPurchasesList){
+            purchasesNumber[purchase.getMonth()-1] = purchase.getSumNumber();
         }
 
-        for (int i = 0; i < salesNumber.length; i++) {
-            for (MonthlySales monthlySales: monthlySalesList){
-                if (i+1 == monthlySales.getMonth())
-                    salesNumber[i] = monthlySales.getSumNumber();
-            }
+        for (MonthlySales monthlySales: monthlySalesList){
+            salesNumber[monthlySales.getMonth()-1] = monthlySales.getSumNumber();
         }
 
         Map<String, int[]> map = new HashMap<>();
@@ -93,24 +87,18 @@ public class StatisticsServlet extends HttpServlet {
         SalesOrderService salesOrderService = SalesOrderService.newInstance();
         List<MonthlySales> monthlySalesList = salesOrderService.findMonth(id, year);
 
-        int[] purchasesPrice = new int[12];//每月采购的总资金
-        int[] salesPrice = new int[12];//每月销售的总利润
+        Double[] purchasesPrice = new Double[12];//每月采购的总资金
+        Double[] salesPrice = new Double[12];//每月销售的总利润
 
-        for (int i = 0; i < purchasesPrice.length; i++) {
-            for (MonthlyPurchase purchase: monthlyPurchasesList){
-                if (i+1 == purchase.getMonth())
-                    purchasesPrice[i] = (int) purchase.getSumPrice();
-            }
+        for (MonthlyPurchase purchase: monthlyPurchasesList){
+            purchasesPrice[purchase.getMonth()-1] = purchase.getSumPrice();
         }
 
-        for (int i = 0; i < salesPrice.length; i++) {
-            for (MonthlySales sales: monthlySalesList){
-                if (i+1 == sales.getMonth())
-                    salesPrice[i] = (int) sales.getSumPrice();
-            }
+        for (MonthlySales sales: monthlySalesList){
+            salesPrice[sales.getMonth() -1 ] = sales.getSumPrice();
         }
 
-        Map<String, int[]> map = new HashMap<>();
+        Map<String, Double[]> map = new HashMap<>();
         map.put("purchase", purchasesPrice);
         map.put("sales", salesPrice);
 
@@ -138,18 +126,12 @@ public class StatisticsServlet extends HttpServlet {
         int[] salesNumber = new int[12];
 
 
-        for (int i = 0; i < purchasesNumber.length; i++) {
-            for (MonthlyPurchase purchase: monthlyPurchasesList){
-                if (i+1 == purchase.getMonth())
-                    purchasesNumber[i] = (int) purchase.getSumNumber();
-            }
+        for (MonthlyPurchase purchase: monthlyPurchasesList){
+            purchasesNumber[purchase.getMonth() - 1] = purchase.getSumNumber();
         }
 
-        for (int i = 0; i < salesNumber.length; i++) {
-            for (MonthlySales monthlySales: monthlySalesList){
-                if (i+1 == monthlySales.getMonth())
-                    salesNumber[i] = monthlySales.getSumNumber();
-            }
+        for (MonthlySales monthlySales: monthlySalesList){
+            salesNumber[monthlySales.getMonth() - 1] = monthlySales.getSumNumber();
         }
 
         Map<String, int[]> map = new HashMap<>();

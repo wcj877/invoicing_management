@@ -72,8 +72,12 @@
                         <a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll"><i
                                 class="mdi mdi-file-multiple"></i>销售管理</a>
                     </li>
+
+                    <li class="">
+                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                                class="mdi mdi-file-multiple"></i>统计</a>
+                    </li>
                 </ul>
-                <!-- End navigation menu -->
 
                 <div class="clearfix"></div>
             </div> <!-- end #navigation -->

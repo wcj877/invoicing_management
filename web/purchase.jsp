@@ -7,13 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: zhuhaipeng
-  Date: 2019/11/23
-  Time: 22:17
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
@@ -80,6 +73,11 @@
                     <li class="">
                         <a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll"><i
                                 class="mdi mdi-file-multiple"></i>销售管理</a>
+                    </li>
+
+                    <li class="">
+                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                                class="mdi mdi-file-multiple"></i>统计</a>
                     </li>
                 </ul>
                 <!-- End navigation menu -->

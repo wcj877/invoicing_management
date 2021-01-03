@@ -80,6 +80,11 @@
                         <a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll"><i
                                 class="mdi mdi-file-multiple"></i>销售管理</a>
                     </li>
+
+                    <li class="">
+                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                                class="mdi mdi-file-multiple"></i>统计</a>
+                    </li>
                 </ul>
                 <!-- End navigation menu -->
 
@@ -96,8 +101,8 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                <li class="breadcrumb-item active">商品</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">基础功能</a></li>
+                <li class="breadcrumb-item active">仓库管理</li>
             </ol>
             <h4 class="page-title">
                 <span><a href="${pageContext.request.contextPath}/ProductServlet?method=findAll">商品管理</a></span>
@@ -125,6 +130,7 @@
                             <th>地址</th>
                             <th>仓库管理员</th>
                             <th>描述</th>
+                            <th>容量</th>
                             <th>删除 / 修改</th>
                         </tr>
                         </thead>
@@ -136,6 +142,7 @@
                                 <td>${store.address}</td>
                                 <td>${store.staffId}</td>
                                 <td>${store.storeDescribe}</td>
+                                <td>${store.number}</td>
 
                                 <td>
                                     <button type="button" id="sa-warning" class="btn btn-sm btn-icon btn-danger">
@@ -197,6 +204,15 @@
             <div class="col-sm-10">
                 <label>
                     <textarea class="form-control" rows="5" name="storeDescribe"></textarea>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">容量</label>
+            <div class="col-sm-10">
+                <label>
+                    <input type="number" class="form-control" value="" name="number">
                 </label>
             </div>
         </div>

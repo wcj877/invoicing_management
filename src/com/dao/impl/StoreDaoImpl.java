@@ -14,9 +14,9 @@ public class StoreDaoImpl implements StoreDao {
 
     @Override
     public void add(Store store) {
-        String sql =" INSERT store(storeName,address,staffId,storeDescribe) VALUES(?,?,?,?)";
+        String sql =" INSERT store(storeName,address,staffId,storeDescribe,number) VALUES(?,?,?,?,?)";
         try {
-            queryRunner.update(sql, store.getStoreName(), store.getAddress(), store.getStaffId(), store.getStoreDescribe());
+            queryRunner.update(sql, store.getStoreName(), store.getAddress(), store.getStaffId(), store.getStoreDescribe(), store.getNumber());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -24,10 +24,10 @@ public class StoreDaoImpl implements StoreDao {
 
     @Override
     public void update(Store store) {
-        String sql =" update store set storeName=?, address=? , storeDescribe = ?" +
+        String sql =" update store set storeName=?, address=? , storeDescribe = ?, number = ?" +
                 "where storeId = ?";
         try {
-            queryRunner.update(sql, store.getStoreName(), store.getAddress(), store.getStoreDescribe(), store.getStoreId());
+            queryRunner.update(sql, store.getStoreName(), store.getAddress(), store.getStoreDescribe(), store.getNumber(), store.getStoreId());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -103,7 +103,12 @@
                 <li class="breadcrumb-item"><a href="javascript:void(0);">统计</a></li>
                 <li class="breadcrumb-item active">统计仓库</li>
             </ol>
-            <h4 class="page-title">统计仓库</h4>
+
+            <h4 class="page-title">
+                <a href="statistics.jsp" >统计商品</a>
+                <a href="statistical_store.jsp" >统计仓库</a>
+            </h4>
+
 
             <span style="margin-left: 20px">选择统计仓库</span>
             <select id="store">

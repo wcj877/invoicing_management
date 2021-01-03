@@ -129,11 +129,11 @@ public class StoreServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         Store store = new Store();
-
         store.setStoreId(request.getParameter("id"));
         store.setStoreName(request.getParameter("name"));
         store.setAddress(request.getParameter("address"));
         store.setStoreDescribe(request.getParameter("describe"));
+        store.setNumber(Integer.parseInt(request.getParameter("num")));
 
         service.update(store);
 

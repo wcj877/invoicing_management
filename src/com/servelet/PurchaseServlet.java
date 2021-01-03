@@ -102,8 +102,8 @@ public class PurchaseServlet extends HttpServlet {
                 buyOrder.setBuyOrderId("cg" + formatter.format(date));
                 buyOrder.setTime(formatterDate.format(date));
 //                buyOrder.setStaffId(request.getSession().getAttribute("id"));
-                buyOrder.setStaffId("511221");
-
+//                buyOrder.setStaffId("511221");
+                buyOrder.setStaffId(String.valueOf(request.getSession().getAttribute("id")));
                 service.add(buyOrder);
             }
 

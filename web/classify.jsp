@@ -75,6 +75,11 @@
                         <a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll"><i
                                 class="mdi mdi-file-multiple"></i>销售管理</a>
                     </li>
+
+                    <li class="">
+                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                                class="mdi mdi-file-multiple"></i>统计</a>
+                    </li>
                 </ul>
                 <!-- End navigation menu -->
 
@@ -91,8 +96,8 @@
         <div class="page-title-alt-bg"></div>
         <div class="page-title-box">
             <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><a href="javascript:void(0);"></a></li>
-                <li class="breadcrumb-item active">商品</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">基础功能</a></li>
+                <li class="breadcrumb-item active">分类管理</li>
             </ol>
             <h4 class="page-title">
                 <span><a href="${pageContext.request.contextPath}/ProductServlet?method=findAll">商品管理</a></span>

@@ -96,7 +96,10 @@
         <li class="breadcrumb-item"><a href="javascript:void(0);">统计</a></li>
         <li class="breadcrumb-item active">统计商品</li>
     </ol>
-    <h4 class="page-title">统计</h4>
+    <h4 class="page-title">
+        <a href="statistics.jsp" >统计商品</a>
+        <a href="statistical_store.jsp" >统计仓库</a>
+    </h4>
 
     <span>选择统计类型</span>
     <select id="types">
