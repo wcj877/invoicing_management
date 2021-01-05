@@ -124,7 +124,7 @@
             </ol>
 
             <h4 class="page-title">
-                <a href="/StatisticsServlet?method=jump" >统计商品</a>
+                <a href="${pageContext.request.contextPath}/StatisticsServlet?method=jump" >统计商品</a>
                 <a href="statistical_store.jsp" >统计仓库</a>
             </h4>
 
@@ -196,7 +196,7 @@
                             label: {
                                 connectorAllowed: false
                             },
-                            pointStart: 2010
+                            pointStart: 1
                         }
                     },
                     series: [{
@@ -260,7 +260,7 @@
                                 label: {
                                     connectorAllowed: false
                                 },
-                                pointStart: 2010
+                                pointStart: 1
                             }
                         },
                         series: [{
@@ -329,7 +329,7 @@
                                 label: {
                                     connectorAllowed: false
                                 },
-                                pointStart: 2010
+                                pointStart: 1
                             }
                         },
                         series: [{

@@ -117,8 +117,8 @@
                 <li class="breadcrumb-item active">销售订单</li>
             </ol>
             <h4 class="page-title">
-                <span><a href="${pageContext.request.contextPath}/PurchaseServlet?method=findAll">销售订单</a></span>
-                <span><a href="${pageContext.request.contextPath}/StoreServlet?method=findAll">客户</a></span>
+                <span><a href="${pageContext.request.contextPath}/SalesOrderServlet?method=findAll">销售订单</a></span>
+                <span><a href="${pageContext.request.contextPath}/ClientServlet?method=findAll">客户</a></span>
             </h4>
         </div>
         <div class="row">
@@ -173,7 +173,7 @@
     <button type="button" class="close" onclick="Custombox.modal.close();">
         <span>&times;</span><span class="sr-only">Close</span>
     </button>
-    <h4 class="custom-modal-title">添加供应商</h4>
+    <h4 class="custom-modal-title">添加客户</h4>
     <form class="form-horizontal m-2" method="post"
           action="${pageContext.request.contextPath}/ClientServlet?method=insert"
           enctype="multipart/form-data">

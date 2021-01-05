@@ -90,7 +90,7 @@ public class SalesOrderServlet extends HttpServlet {
                         if (!file.isDirectory()) {
                             item.write(file);
                         }
-                        item.delete(); // 删除组件运行时产生的临时文件
+                        item.delete(); //文件上传结束后调用 删除组件运行时产生的临时文件
                     }
                 }
 
@@ -125,10 +125,10 @@ public class SalesOrderServlet extends HttpServlet {
         List<Product> productList = productService.findAll();
 
 
-        request.setAttribute("salesOrderList", salesOrderList);
+        request.setAttribute("salesOrderList", salesOrderList);//保存数据
         request.setAttribute("clientList", clientList);
         request.setAttribute("productList", productList);
 
-        request.getRequestDispatcher("salesOrder.jsp").forward(request, response);
+        request.getRequestDispatcher("salesOrder.jsp").forward(request, response);//请求转发（由下一个Servlet完成响应）
     }
 }

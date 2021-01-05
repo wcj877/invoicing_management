@@ -118,7 +118,7 @@
             </ol>
             <h4 class="page-title">
                 <span><a href="${pageContext.request.contextPath}/PurchaseServlet?method=findAll">采购订单</a></span>
-                <span><a href="${pageContext.request.contextPath}/StoreServlet?method=findAll">供应商</a></span>
+                <span><a href="${pageContext.request.contextPath}/SupplierServlet?method=findAll">供应商</a></span>
             </h4>
         </div>
         <div class="row">
