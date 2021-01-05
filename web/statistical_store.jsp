@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>商品经销存  -  管理系统</title>
+    <title>商品进销存-管理系统</title>
     <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
