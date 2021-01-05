@@ -49,7 +49,7 @@ File: Sweet Alerts
         //Warning Message
         //警告信息
         $(document).on('click', '#sa-warning', function () {
-            var id = $(this).parent().prevAll().eq(2).text();
+            var id = $(this).parent().prevAll().eq(3).text();
 
             var hide = $(this).parent().parent();
             console.log("删除：" + id);

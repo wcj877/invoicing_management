@@ -15,9 +15,9 @@ public class ClientDaoImpl implements ClientDao {
 
     @Override
     public void add(Client client) {
-        String sql =" INSERT client(clientId,clientContact,clientPhone) VALUES(?,?,?)";
+        String sql =" INSERT client(clientId, clientName,clientContact,clientPhone) VALUES(?,?,?,?)";
         try {
-            queryRunner.update(sql,client.getClientId(), client.getClientContact(), client.getClientPhone());
+            queryRunner.update(sql,client.getClientId(), client.getClientName(), client.getClientContact(), client.getClientPhone());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

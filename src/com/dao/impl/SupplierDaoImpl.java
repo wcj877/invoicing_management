@@ -15,9 +15,9 @@ public class SupplierDaoImpl implements SupplierDao {
 
     @Override
     public void add(Supplier supplier) {
-        String sql =" INSERT supplier(supplierId,supplierContact,supplierPhone) VALUES(?,?,?)";
+        String sql =" INSERT supplier(supplierId, supplierName,supplierContact,supplierPhone) VALUES(?,?,?,?)";
         try {
-            queryRunner.update(sql,supplier.getSupplierId(), supplier.getSupplierContact(), supplier.getSupplierPhone());
+            queryRunner.update(sql,supplier.getSupplierId(), supplier.getSupplierName(), supplier.getSupplierContact(), supplier.getSupplierPhone());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
