@@ -48,9 +48,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> findProductAll() {
-
         StringBuilder sb = new StringBuilder();
-
         /**
          * 运行此项目前先将这两个视图创建，
          * 创建后才可以查询
@@ -73,12 +71,10 @@ public class ProductDaoImpl implements ProductDao {
 //                "from buyorder RIGHT JOIN product ON product.productId = buyorder.productId  " +
 //                "group by product.productId;  ");
 
-
         //创建表
         sb.append("SELECT view_buy.productId, view_buy.productName, view_buy.describes, view_buy.classifyId, view_buy.photo,  " +
                 " view_buy.storeId, salesVolume, saPrice, buyVolume, buyPrice  " +
                 "FROM view_sa,view_buy where view_sa.productId = view_buy.productId;  ");
-
         try {
             // 根据当前页，查询当前页数据(一页数据)
                 return queryRunner.query(sb.toString(), new BeanListHandler<Product>(Product.class));
@@ -97,5 +93,4 @@ public class ProductDaoImpl implements ProductDao {
             throw new RuntimeException(e);
         }
     }
-
 }

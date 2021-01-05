@@ -63,7 +63,7 @@
                     </li>
 
                     <li class="">
-                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                        <a href="${pageContext.request.contextPath}/StatisticsServlet?method=jump"><i
                                 class="mdi mdi-file-multiple"></i>统计</a>
                     </li>
 

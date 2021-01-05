@@ -87,8 +87,8 @@ public class StatisticsServlet extends HttpServlet {
         SalesOrderService salesOrderService = SalesOrderService.newInstance();
         List<MonthlySales> monthlySalesList = salesOrderService.findMonth(id, year);
 
-        Double[] purchasesPrice = new Double[12];//每月采购的总资金
-        Double[] salesPrice = new Double[12];//每月销售的总利润
+        double[] purchasesPrice = new double[12];//每月采购的总资金
+        double[] salesPrice = new double[12];//每月销售的总利润
 
         for (MonthlyPurchase purchase: monthlyPurchasesList){
             purchasesPrice[purchase.getMonth()-1] = purchase.getSumPrice();
@@ -98,7 +98,7 @@ public class StatisticsServlet extends HttpServlet {
             salesPrice[sales.getMonth() -1 ] = sales.getSumPrice();
         }
 
-        Map<String, Double[]> map = new HashMap<>();
+        Map<String, double[]> map = new HashMap<>();
         map.put("purchase", purchasesPrice);
         map.put("sales", salesPrice);
 

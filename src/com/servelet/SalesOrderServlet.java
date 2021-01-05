@@ -53,7 +53,7 @@ public class SalesOrderServlet extends HttpServlet {
         try {
             //采用默认临界值和系统临时文件夹构造文件项工厂对象
             FileItemFactory factory = new DiskFileItemFactory();
-//使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
+            //使用ServletFileUpload解析器解析上传数据，解析结果返回的是一个List<FileItem>集合，每一个FileItem对应一个Form表单的输入项
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setFileSizeMax(10 * 1024 * 1024); // 单个文件大小限制
             upload.setSizeMax(50 * 1024 * 1024); // 总文件大小限制

@@ -75,7 +75,7 @@
                     </li>
 
                     <li class="">
-                        <a href="${pageContext.request.contextPath}/statistics.jsp"><i
+                        <a href="${pageContext.request.contextPath}/StatisticsServlet?method=jump"><i
                                 class="mdi mdi-file-multiple"></i>统计</a>
                     </li>
                     <div class="dropdown notification-list" style="float: right">
@@ -116,7 +116,7 @@
         <li class="breadcrumb-item active">统计商品</li>
     </ol>
     <h4 class="page-title">
-        <a href="statistics.jsp" >统计商品</a>
+        <a href="StatisticsServlet?method=jump" >统计商品</a>
         <a href="statistical_store.jsp" >统计仓库</a>
     </h4>
 
@@ -298,6 +298,8 @@
             url += '&id='+$(this).val();
             id =$(this).val();
 
+            console.log(url);
+
             $.getJSON(url, function (data) {
                 console.log(data);
                 chart = Highcharts.chart('container', {
@@ -358,7 +360,7 @@
             year = $(this).val();
             var url = 'StatisticsServlet?method='+statisticsType + "&year=" + year;
 
-            statisticsType = $(this).val();
+            year = $(this).val();
 
             if (id !== null)
                 url+= '&id='+id;
