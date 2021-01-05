@@ -71,7 +71,7 @@
                         <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="false" aria-expanded="false">
                             <img src="public/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span
-                                class="ml-1"><%=request.getSession().getAttribute("id")%><i class="mdi mdi-chevron-down"></i> </span>
+                                class="ml-1"><%=session.getAttribute("name")%><i class="mdi mdi-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
                             <!-- item-->

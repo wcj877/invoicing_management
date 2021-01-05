@@ -171,8 +171,9 @@ public class StaffServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        if (service.findStaff(staff.getStaffId(), staff.getPassword()) != null){
+        Staff staff1 = service.findStaff(staff.getStaffId(), staff.getPassword());
+        if (staff1 != null){
+            session.setAttribute("name", staff1.getStaffName());
             session.setAttribute("id", staff.getStaffId());
             request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {

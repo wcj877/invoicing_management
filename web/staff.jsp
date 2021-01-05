@@ -77,6 +77,25 @@
                         <a href="${pageContext.request.contextPath}/statistics.jsp"><i
                                 class="mdi mdi-file-multiple"></i>统计</a>
                     </li>
+                    <div class="dropdown notification-list" style="float: right">
+                        <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="false" aria-expanded="false">
+                            <img src="public/images/users/avatar-1.jpg" alt="user" class="rounded-circle"> <span
+                                class="ml-1"><%=session.getAttribute("name")%><i class="mdi mdi-chevron-down"></i> </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated profile-dropdown ">
+                            <!-- item-->
+                            <div class="dropdown-item noti-title">
+                                <h6 class="text-overflow m-0">欢迎使用 !</h6>
+                            </div>
+
+                            <!-- item-->
+                            <a href="${pageContext.request.contextPath}/IndexServlet?method=quit" class="dropdown-item notify-item">
+                                <i class="dripicons-power"></i> <span>退出</span>
+                            </a>
+
+                        </div>
+                    </div>
                 </ul>
                 <!-- End navigation menu -->
 
